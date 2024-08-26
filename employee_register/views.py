@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from .forms import EmployeeForm
+from .models import Employee
 
 #view functions
 def employee_list(request):
-    return render(request, "employee_register/employee_list.html")
+    context = {'employee_list' : Employee.objects.all()}
+
+    return render(request, "employee_register/employee_list.html", context)
 
 def employee_form(request):
     #this variable will be included in employee_form.html 
